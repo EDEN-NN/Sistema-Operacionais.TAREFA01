@@ -99,7 +99,19 @@ public class RedesController {
 				result += vet[pos-1];
 				return result;
 			} else {
-				return null;
+				String command = "ping -4 -c 10 www.google.com.br";
+				String ping = callProcess(command);
+				String vet[] = ping.split(" ");
+				String result = "";
+				
+				for(int i=0; i<vet.length; i++) {
+					if(vet[i].contains("rtt")) {
+						result += vet[i+3];
+						String aux [] = result.split("/");
+						result = aux[1] + " ms";
+					}
+				}
+				return result;
 			}
 		}
 	}
