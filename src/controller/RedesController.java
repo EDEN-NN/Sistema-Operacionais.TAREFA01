@@ -11,9 +11,8 @@ public class RedesController {
 		super();
 	}
 	
-	public String si(String so) {
-		so = System.getProperty("os.name");
-		return so;
+	public String si() {
+		return System.getProperty("os.name");
 	}
 	
 	public String callProcess(String command) {
@@ -75,25 +74,13 @@ public class RedesController {
 			String command = "ifconfig";
 			String ip = callProcess(command);
 			String vet[] = ip.split(" ");
-			
 			String result = vet[0]+" ";
 			
 			for(int i = 1; i<vet.length; i++) {
-				if(vet[i].equals("inet") || !vet[i].equals("inet6")) {
-					result+= vet[i] + " ";
-					if(vet[i].contains("1")) {
-						result+= vet[i].split(".");
-					}
-					
-				} if (vet[i].equals("collisions")) {
-					result+= vet[i+2] + " ";
-					if(vet[i].equals("inet") || !vet[i].equals("inet6")) {
-						result+= vet[i] + " ";
-						if(vet[i].contains("1")) {
-							result+= vet[i].split(".");
-						}
-						
-					}
+				if(vet[i].equals("inet")) {
+					result+= vet[i+1] + " \n";
+				} if (vet[i].contains("collisions")) {
+					result+= vet[i+1].substring(1) + " ";
 					
 				} 
 			}

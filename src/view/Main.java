@@ -8,8 +8,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		RedesController rd = new RedesController();
-		String os = "";
-		os = rd.si(os);
+		String os = rd.si();
+		
 		
 		int opc = 22;
 		
@@ -20,8 +20,7 @@ public class Main {
 			
 			switch (opc) {
 			case 1:
-				os = rd.ip(os);
-				JOptionPane.showMessageDialog(null, os);
+				JOptionPane.showMessageDialog(null, rd.ip(os));
 				break;
 			case 2:
 				
