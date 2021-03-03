@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Iterator;
 
 public class RedesController {
 	
@@ -88,5 +89,18 @@ public class RedesController {
 		}
 			
 		} 
+		public String ping(String so) {
+			if(so.contains("Windows")) {
+				String command = "PING -4 -n 10 www.google.com.br";
+				String ping = callProcess(command);
+				String vet[] = ping.split(" ");
+				String result = "";
+				int pos = vet.length;
+				result += vet[pos-1];
+				return result;
+			} else {
+				return null;
+			}
+		}
 	}
 

@@ -23,7 +23,7 @@ public class Main {
 				JOptionPane.showMessageDialog(null, rd.ip(os));
 				break;
 			case 2:
-				
+				JOptionPane.showMessageDialog(null, rd.ping(os));
 				break;
 			default: 
 				break;
